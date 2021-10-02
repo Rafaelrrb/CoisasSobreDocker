@@ -1,0 +1,111 @@
+/* PRECISA JA TER INSTALADO O DOCKER */
+
+/* LINKS */
+
+KIND = https://kind.sigs.k8s.io/docs/user/quick-start/#installation
+
+KUBECTL = https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+/* CRIANDO CLUSTER */
+
+sudo kind create cluster /* cria um cluster */
+
+sudo kndectl get nodes /* lista nos do cluster */
+
+sudo kind get clusters /* lista os cluster criados com kind */
+
+sudo kind create cluster --name meucluster /* criando cluster com passagem de parametros no caso dando um nome */
+
+sudo kind delete cluster --name meucluster /* deleta cluster */
+
+sudo kind create cluster --name meucluster --config cluster.yaml /* criando com multiplos nos */
+
+
+/* DEPLOY NO KUBERNET */
+
+POD /* cada pod deve armazenar uma api diferente pra se conectar depois para escalar individualmente */
+
+sudo kubectl api-resources /* consultar grupo de recursos das apiVersion */
+
+sudo kubectl create -f meupod.yaml /* comando que cria o pod aplica os comandos no kubernet */
+
+sudo kubectl get pods /* lista os pod */
+
+sudo kubectl describe pod meupod /* da mais detalhes do pod criado */
+
+sudo kubectl port-forward pod/meupod 8080:80 /* direciona as portas */
+
+sudo kubectl delete pod meupod /* deleta o pod */
+
+/* LABELS E SELECTORS */
+
+label /* usada pra marcar o objeto é um elemento chave valor */
+
+sudo kubectl apply -f meupod.yaml /* cria pod */
+
+sudo kubectl get pods /* lista pods */
+
+selector /* usado pra selecionar esse objeto pela chave */
+
+sudo kubectl get pods app=web /* usa a lebel pra selecionar o pod */
+
+/* REPLICASET */
+
+replicas: 3
+template: Pod   /* sempre avera 3 pod caso um seja eliminado vai ser criado outro pra subestituir */
+
+sudo kubectl apply -f meureplicaset.yaml /* executa */
+
+sudo kubectl get replicaset /* lista */
+
+/* caso eu mude a versão ele nao atualiza isso a não ser que eu delete um pod dai ele recria com a imagem nova */
+
+/*  DEPLOYMENT */
+
+/* controla as mudanças de versão  */
+
+deployment => ReplicaSet => Pod
+
+/* SERVICES */
+
+
+ClusterIP /* acesso interno  */
+NodePort /* acesso externo  */
+LoadBalancer /* cria um ip pra acessar o service  */
+
+
+/* CRIANDO APLICAÇÃO */
+
+/* ROTTEN-POTATOES-MAIN apenas uma exemplo pronto nada foi criado  */
+
+sudo docker build -t rrborba/rotten-potatoes:v1 . /* constroi a imagem */
+
+sudo docker login
+
+sudo docker push rrborba/rotten-potatoes:v1
+
+sudo docker tag rrborba/rotten-potatoes:v1 rrborba/rotten-potatoes:latest
+
+sudo docker push rrborba/rotten-potatoes:latest
+
+sudo kuberctl apply -f deployment.yaml /* criação */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

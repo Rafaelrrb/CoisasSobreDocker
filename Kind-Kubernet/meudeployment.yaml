@@ -1,0 +1,50 @@
+apiVarsion: apps/v1
+kind: Deployment
+metadata:
+  name: meudeployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: kubedevio/web-page:blue
+          ports:
+            - containerPort: 80
+---
+# criando services ClusterIP
+
+apiVarsion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  selector:
+    app: web
+  ports:
+  - port: 80
+    protocol: TCP
+    name: http
+  type: ClusterIP
+
+# criando services NodePort
+
+apiVarsion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  selector:
+    app: web
+  ports:
+  - port: 80
+    protocol: TCP
+    name: http
+    nodePort: 30000
+  type: NodePort
