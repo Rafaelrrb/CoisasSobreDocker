@@ -1,0 +1,49 @@
+Integração Continua = CI /* pega um codigo novo que vai ser add a aplicação */
+
+Deploy continuo = CD /* vai fazer o processo de deploy processo de aprovação via testes */
+
+/* GITHUB ACTIONS */
+
+https://www.digitalocean.com/?refcode=38c0942c6570&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste
+/* é cobrado  */
+
+create => kubernetes 
+
+node pool /* botar um nome */
+Node plean /* escolhe o tipo de node */
+Finalize 
+  Nome : iniciativa-k8s
+  
+
+depois de criada baixar o = access cluster config file
+
+cp ~/Downloads/iniciativa-k8s-kubeconfig.yaml  ~/.kube/config  /*terminal fazer copia*/ 
+
+sudo kubectl get nodes /* ver se tem a comunicação */
+
+
+/* mudar no deployment.yaml de NodePort para LoadBalance  ( rotten-potatoes-main )*/
+sudo apply -f k8s/deployment.yaml /* criando os pod */
+
+sudo watch 'kubectl get all" /* pra pegar o ip externo */
+
+/* PIPELINE BASICA */
+
+no github no seu projeto ir na aba actions => set up a workflow
+
+/* PIPELINE DE CI */
+
+buscar actions de docker usar a docker login e o build-push-action(Build and push Docker images) 
+
+https://github.com/marketplace/actions/docker-login
+
+https://github.com/marketplace/actions/build-and-push-docker-images
+
+/* ADD SECRETS NO GITHUB */
+
+setings => secrets
+
+/* PIPELINE DE CD */
+
+
+
