@@ -28,7 +28,8 @@ jobs:
           push: true
           tags: |
             rrborba/rotten-potatoes:latest
-            rrborba/rotten-potatoes:${{ github.run_number }} # cria uma var de contagem de versão automatica
+            rrborba/rotten-potatoes:${{ github.run_number }}     
+        # cria uma var de contagem de versão automatica
         
         
         
