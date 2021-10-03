@@ -31,26 +31,26 @@ jobs:
             rrborba/rotten-potatoes:${{ github.run_number }}     
         # cria uma var de contagem de versão automatica
         
-  CD:
-    needs: [CI]
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v2
-        
-      - name: Kubernetes set context
-        uses: Azure/k8s-set-context@v1.1
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.K8S_CONFIG }}
+#  CD:
+#    needs: [CI]
+#    runs-on: ubuntu-latest
+#    
+#    steps:
+#      - uses: actions/checkout@v2
+#        
+#      - name: Kubernetes set context
+#        uses: Azure/k8s-set-context@v1.1
+#        with:
+#          method: kubeconfig
+#          kubeconfig: ${{ secrets.K8S_CONFIG }}
         # não vai funcina pois a variavel não tem conteudo 
         
-      - name: Deploy to Kubernetes cluster
-        uses: Azure/k8s-deploy@v1.3
-        with:
-          images: rrborba/rotten-potatoes:${{ github.run_number }} 
-          manifests: |
-            ./Kind-Kubernet/rotten-potatoes-main/k8s/deployment.yaml
+#      - name: Deploy to Kubernetes cluster
+#        uses: Azure/k8s-deploy@v1.3
+#        with:
+#          images: rrborba/rotten-potatoes:${{ github.run_number }} 
+#          manifests: |
+#            ./Kind-Kubernet/rotten-potatoes-main/k8s/deployment.yaml
             
         
         
