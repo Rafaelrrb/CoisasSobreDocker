@@ -9,12 +9,19 @@ RUN npm install
 # instala o npm
 
 COPY . .
+# copia todos os arquivos restantes
 
 EXPOSE 8080
 #define uma porta
 
 CMD ["node","server.js"]
 # ordem de execução 
+
+# crinado a imagem 
+# sudo docker image buikd -t conversao-temperatura .
+
+# rodando
+# sudo docker container rum -d -p 8080:8080 conversao-temperatura
 
 # entre usar COPY e ADD use o COPY
 

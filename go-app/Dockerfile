@@ -7,7 +7,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo - o main
 # terminal 
 # sudo docker build -t rrborba/go-app:simples .
 
-# imagem compacita
+# imagem compacta
 FROM alpine:3.14
 WORKDIR /app
 COPY --from=build /app/main .

@@ -5,7 +5,7 @@ https://docs.docker.com/get-docker/
 
 sudo docker container run hello-world /* cria container  */
 
-sudo docker container ls /* lista os containers */
+sudo docker container ls /* lista os containers ativos*/
 
 sudo docker container ls -a /* lista os containers que já foi rodado */
 
@@ -18,7 +18,7 @@ sudo docker container run -it ubuntu /bin/bash /* modointerativo e abilita termi
 sudo docker container run -d nginx /* executa em 2 plano */
 
 
-sudo docker container run -d -pd 8080:80 nginx /* determina as portas */
+sudo docker container run -d -p 8080:80 nginx /* determina as portas */
 
 sudo docker container rm -f (ID ou nome do container) /* -f deleta o container que ainda esta rodando */
 
@@ -29,9 +29,11 @@ sudo docker container exec -it 32jk32k32kjh4 /bin/bash /* executa o termina do c
 
 exit /* fecha */
 
-sudo docker stop /*para execução do container*/
+sudo docker stop (ID) /*para execução do container*/
 
-sudo docker start /* inicializa o container */
+sudo docker start (ID)/* inicializa o container */
+
+sudo docker container logs -n 5 (ID) /* mostra os 5 ultimos logs do container  */
 
 /* DOCKERFILE  */
 
@@ -50,6 +52,31 @@ sudo docker image build -t comversao-temperatura . /* cria a imagem do exemplo  
 
 sudo docker container run -d -p 8080:8080 comversao-temperatura /* cirando o container com a imagem  */
 
+/* OPÇÕES DE USO NO DOCKERFILE */
+
+FROM /* inicializa o buld de uma imagem a partir de uma imagem base */
+
+RUM /* executa um comando */
+
+LABEL /* adiciona metadados da imagem */
+
+CMD /* define o comando e/ou parametro padrão */
+
+EXPOSE /* define quem o container precisa expor a porta em questão */
+
+ARG /* define um argumento para ser usado no processo de construção */
+
+ENV /* define variaveis de ambiente */
+
+ADD /* copia arquivos ou diretorios ou arquivos remotos e adiciona ao sistema de arquivos da imagem */
+
+COPY /* copia arquivos ou diretorios e adiciona ao sistema de arquivos de imagem */
+
+ENTREYPOINT /* ajuda voce a configurar um conteiner que pode ser executado como um executavel */
+
+VOLUME /* define volumes que devem ser dfinidos */
+
+WORKDIR /* define o seu diretorio corrente */
 
 /* 	NOMEANDO SUA IMAGEM DOCKER BOAS PRATICAS	 */
 
@@ -58,13 +85,10 @@ sudo docker container run -d -p 8080:8080 comversao-temperatura /* cirando o con
 	nome do / nome do    : tag da 
 	autor  / repositorio : versao
 
+/* .dockerignore usado pra oguinorar pastas ou arquivos que não devem ser rodados */
 
+/* Docker Hub */
 
+sudo docker login 
 
-
-
-
-
-
-
-
+sudo docker push (nome da imagem) /* envia a imagem que vc criou */

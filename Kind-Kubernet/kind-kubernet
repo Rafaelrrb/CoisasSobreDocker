@@ -89,23 +89,3 @@ sudo docker tag rrborba/rotten-potatoes:v1 rrborba/rotten-potatoes:latest
 sudo docker push rrborba/rotten-potatoes:latest
 
 sudo kuberctl apply -f deployment.yaml /* criação */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
