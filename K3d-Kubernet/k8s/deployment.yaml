@@ -87,3 +87,4 @@ spec:
     targetPort: 5000
     nodePort: 3000
   type: NodePort
+  # trocar o NodePort por LoadBalancaer quando for usar pelo github

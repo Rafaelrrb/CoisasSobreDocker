@@ -1,15 +1,31 @@
 Integração Continua = CI /* pega um codigo novo que vai ser add a aplicação */
 
+Codificação => Commit => Buid => Teste => Geração de Pcotes 
+
 Deploy continuo = CD /* vai fazer o processo de deploy processo de aprovação via testes */
 
+Release => Teste => Aceito => Deploy em Produção
+
 /* GITHUB ACTIONS */
+
+-Workflow => É uma rotina que vc define no repositorio. É onde vc define as suas pipelines. Nele vão ter os Jobs e a definição dos eventos que vão disparar
+
+-Events => É o estimulo ou ação que dispara o workflow. vc pode definir um pull request, um commit ou até webhooks, a lista é grande.
+
+-Jobs => O job é uma sequencia de steps que posso executar de forma paralela ou sequencial dentro do workflow. Quando um job depende do outro, vc executa sequencialmente, senão, roda em paralelo.
+
+-Steps => É a execução de um comando shell ou powershell ou uma action dentro de um Job. Todos os steps compartilham dados entre si.
+
+-Actions => São instruções criadas em blocos de configurção. vc pode criar a sua action ou usar as criadas na comunidade do github
+
+-Runners => É o agente que vai executar as ações do seu Job. vc pode usar os disponiveis como serviço no github ou usar o seu.
 
 https://www.digitalocean.com/?refcode=38c0942c6570&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste
 /* é cobrado  */
 
 create => kubernetes 
 
-node pool /* botar um nome */
+Node pool /* botar um nome */
 Node plean /* escolhe o tipo de node */
 Finalize 
   Nome : iniciativa-k8s
@@ -22,10 +38,11 @@ cp ~/Downloads/iniciativa-k8s-kubeconfig.yaml  ~/.kube/config  /*terminal fazer 
 sudo kubectl get nodes /* ver se tem a comunicação */
 
 
-/* mudar no deployment.yaml de NodePort para LoadBalance  ( rotten-potatoes-main )*/
+/* mudar no deployment.yaml de NodePort para LoadBalance  ( rotten-potatoes-main na pasta K8S)*/
+
 sudo apply -f k8s/deployment.yaml /* criando os pod */
 
-sudo watch 'kubectl get all" /* pra pegar o ip externo */
+sudo watch 'kubectl get all' /* pra pegar o ip externo */
 
 /* PIPELINE BASICA */
 
@@ -45,5 +62,5 @@ setings => secrets
 
 /* PIPELINE DE CD */
 
-
+buscar actions "Kubernetes set context"
 
