@@ -23,8 +23,8 @@ jobs:
       - name: Docker build and Push
         uses: docker/build-push-action@v2.7.0
         with:
-          context: ./Kind-Kubernet/rotten-potatoes-main/src
-          file: ./Kind-Kubernet/rotten-potatoes-main/src/Dockerfile
+          context: ./K3d-Kubernet/rotten-potatoes-main/src
+          file: ./K3d-Kubernet/rotten-potatoes-main/src/Dockerfile
           push: true
           tags: |
             rrborba/rotten-potatoes:latest
