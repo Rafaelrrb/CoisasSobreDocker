@@ -18,7 +18,7 @@ CMD ["node","server.js"]
 # ordem de execução 
 
 # crinado a imagem 
-# sudo docker image buikd -t conversao-temperatura .
+# sudo docker image build -t conversao-temperatura .
 
 # rodando
 # sudo docker container rum -d -p 8080:8080 conversao-temperatura
