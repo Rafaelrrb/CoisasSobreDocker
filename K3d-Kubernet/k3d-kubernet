@@ -8,9 +8,11 @@ KUBECTL = https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
 K3D https://k3d.io/v5.2.2/
 
-/* CRIANDO CLUSTER */
+    /* CRIANDO CLUSTER */
 
 sudo k3d cluster create/* cria um cluster */
+
+sudo k3d cluster list /* lista os clusters criados */
 
 sudo kubectl get nodes /* lista nos do cluster */
 
@@ -18,14 +20,12 @@ sudo kind get clusters /* lista os cluster criados com kind */
 
 sudo k3d cluster create meucluster --no-lb /* criando cluster e dando um nome */
 
-sudo k3d cluster list /* lista os clusters criados */
-
 sudo k3d cluster delete (nome do cluster)  /* deleta clusters criados caso não informe o parametro ele deleta o cluster default */
 
 sudo k3d cluster create meucluster --servers 3 --agents 3 /* multiplas maquinas */ 
 
 
-/* DEPLOY NO KUBERNET */
+    /* DEPLOY NO KUBERNET  (pod.yaml)*/
 
 POD /* cada pod deve armazenar uma api diferente pra se conectar depois para escalar individualmente */
 
@@ -43,7 +43,7 @@ sudo kubectl port-forward pod/meupod 8080:80 /* direciona as portas */
 
 sudo kubectl delete pod meupod /* deleta o pod */
 
-/* LABELS E SELECTORS */
+    /* LABELS E SELECTORS */
 
 label /* usada pra marcar o objeto é um elemento chave valor */
 
@@ -53,9 +53,9 @@ sudo kubectl get pods /* lista pods */
 
 selector /* usado pra selecionar esse objeto pela chave */
 
-sudo kubectl get pods app=web /* usa a lebel pra selecionar o pod */
+sudo kubectl get pods -l app=green /* usa a lebel pra selecionar o pod */
 
-/* REPLICASET */
+    /* REPLICASET (meureplicaset.yaml)*/
 
 replicas: 3
 template: Pod   /* sempre avera 3 pod caso um seja eliminado vai ser criado outro pra subestituir */
@@ -68,13 +68,13 @@ sudo kubectl get replicaset /* lista */
 
 /* caso eu mude a versão ele nao atualiza isso a não ser que eu delete um pod dai ele recria com a imagem nova */
 
-/*  DEPLOYMENT */
+    /*  DEPLOYMENT (meudeployment.yaml)*/
 
 /* controla as mudanças de versão melhor escolha na hora de criar pods */
 
 Deployment => ReplicaSet => Pod
 
-/* SERVICES */
+    /* SERVICES */
 
 
 ClusterIP /* acesso interno  */
@@ -84,7 +84,7 @@ LoadBalancer /* cria um ip pra acessar o service em nuvem */
 sudo k3d cluster create meucluster --servers 1 --agents 1 -p "8080:30000@loadbalancer" /* recriando o cluster agora dando uma porta pra ele usar */
 
 
-/* CRIANDO APLICAÇÃO */
+    /* CRIANDO APLICAÇÃO */
 
 /* ROTTEN-POTATOES-MAIN apenas uma exemplo pronto nada foi criado  */
 

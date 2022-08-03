@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: web
-      image: kubedevio/web-page:blue
+      image: rrborba/web-page:blue
       ports:
         - containerPort: 80
 ---
@@ -14,12 +14,12 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: meusegundopod
+  name: meupod-2
   labels:
-    app: web
+    app: green
 spec:
   containers:
     - name: web
-      image: kubedevio/web-page:blue
+      image: rrborba/web-page:green
       ports:
         - containerPort: 80
