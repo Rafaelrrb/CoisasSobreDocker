@@ -23,6 +23,14 @@ Release => Teste => Aceito => Deploy em Produção
 https://www.digitalocean.com/?refcode=38c0942c6570&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste
 /* é cobrado  */
 
+ssh-keygen -t rsa -b 2048 /* cria um chave */
+
+ls C:\Users\rafaelrrb\.ssh /* lista as chaves ssh*/
+
+cat  C:\Users\rafaelrrb\.ssh\chavepublica.pub /* mostra o conteudo da chave publica */
+
+settings -> security -> add ssh -> colar conteudo da cheve publica
+
 create => kubernetes 
 
 Node pool /* botar um nome */
